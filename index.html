@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor</title>
+</head>
+
+<body>
+    <span>Quantidade da moeda original:</span>
+    <input type="text" id="qtdMoedaOriginal" placeholder="Quantidade da moeda original" />
+    <br>
+    <span>Cotação da moeda original:</span>
+    <input type="text" id="cotMoedaOriginal" placeholder="Cotação da moeda original" />
+    <br>
+    <span>Quantidade da moeda obtida:</span>
+    <input type="text" id="qtdMoedaObtida" placeholder="Quantidade da moeda obtida" />
+    <br>
+    <span>Cotação da moeda obtida em R$ (BRL):</span>
+    <input type="text" id="cotacaoMoedaObtidaBRL" placeholder="Cotação da moeda obtida em R$ (BRL)" disabled />
+    <br>
+    <span>Valor em R$ (BRL):</span>
+    <input type="text" id="valorBRL" placeholder="Valor em R$ (BRL)" disabled />
+
+    <button onclick="calcular()">Calcular</button>
+
+    <script>
+        function calcular() {
+            var qtdMoedaOriginal = document.getElementById("qtdMoedaOriginal").value.replace(',', '.');
+            var qtdMoedaObtida = document.getElementById("qtdMoedaObtida").value.replace(',', '.');
+            var cotMoedaOriginal = document.getElementById("cotMoedaOriginal").value.replace(',', '.');
+
+            var valorBRL = qtdMoedaOriginal * cotMoedaOriginal;
+            var cotacaoMoedaObtidaBRL = Math.round((valorBRL / qtdMoedaObtida) * 100000000) / 100000000;
+
+            document.getElementById("valorBRL").value = valorBRL;
+            document.getElementById("cotacaoMoedaObtidaBRL").value = cotacaoMoedaObtidaBRL;
+        }
+    </script>
+
+</body>
+
+</html>
